@@ -11,24 +11,15 @@ client.on('message', message => {
   	}
 });
 
-client.on('message', message => {
-    if (message.content.startsWith("-stats")) {
-    message.channel.send({
-        embed: new Discord.RichEmbed()
-            .setColor('RANDOM')
-            .setTitle('Stats Bot / Info ')
-            .addField('``Uptime``', timeCon(process.uptime()), true)
-            .addField('``Ping Is``' , `${Date.now() - message.createdTimestamp}` + '``Ms``', true)
-            .addField('``RAM Usage``', `${(process.memoryUsage().rss / 1048576).toFixed()}MB`, true)
-            .addField('``Guild Count``', client.guilds.size, true)
-            .addField('``Bot In channel``' , `${client.channels.size}` , true)
-            .addField('``Users rout``' ,`${client.users.size}` , true)
-            .addField('``Name Bot Or tag``' , `${client.user.tag}` , true)
-            .addField('``Bot Id``' , `${client.user.id}` , true)
-            .setFooter('SpaceBot / Team')
-    })
-}
-});
+client.on("message", (message) => {
+  if (message.content.startsWith("!cv")) {
+              if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply(" `MANAGE_CHANNELS` :laughing::laughing:ليس لديك صلاحية:laughing::laughing: ");
+          let args = message.content.split(" ").slice(1);
+      message.guild.createChannel(args.join(' '), 'voice');
+      message.channel.sendMessage('✅ تـم إنـشاء روم صـوتي')
+      
+  }
+  });
 
 
 function timeCon(time) {
