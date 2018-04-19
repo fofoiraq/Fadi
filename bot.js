@@ -11,15 +11,7 @@ client.on('message', message => {
   	}
 });
 
-client.on("message", (message) => {
-  if (message.content.startsWith("!cv")) {
-              if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply(" `MANAGE_CHANNELS` :laughing::laughing:ليس لديك صلاحية:laughing::laughing: ");
-          let args = message.content.split(" ").slice(1);
-      message.guild.createChannel(args.join(' '), 'voice');
-      message.channel.sendMessage('✅ تـم إنـشاء روم صـوتي')
-      
-  }
-  });
+
 
 
 function timeCon(time) {
