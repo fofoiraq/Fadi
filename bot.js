@@ -42,7 +42,7 @@ if (command == "embed") {
 });
 
 client.on('message', message => {
-    if (message.content.startsWith('+spotify')) {
+    if (message.content.startsWith('-spotify')) {
   let user = message.mentions.users.first() || message.author;
     
   
